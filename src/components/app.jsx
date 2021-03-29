@@ -5,13 +5,26 @@ import GifList from './gif_list.jsx';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      gifts: [],
+      selectedGifId: "f6VfCFyOL5KmiICskp"
+    }
+  }
+
+  search = (query) => {
+    // implement API call
+
+  }
+
   render() {
     const gifs = [
       // objects containing an id
       // define the gifs
       { id: "f6VfCFyOL5KmiICskp" },
       { id: "dXKiD8XysOuhFAJB1f" },
-      { id: "dXKiD8XysOuhFAJB1f"}
+      { id: "7SKWbnycqb2Pze62Zk"}
     ];
 
     return (
@@ -19,11 +32,11 @@ class App extends Component {
         <div className="left-scene">
           <SearchBar />
           <div className="selected-gif">
-            <Gif id="f6VfCFyOL5KmiICskp"/>
+            <Gif id={this.state.selectedGifId} />
           </div>
         </div>
         <div className="right-scene">
-          <GifList gifs={gifs}/>
+          <GifList gifs={this.state.gifs} />
         </div>
       </div>
     );
